@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-center">Reading Log </h1>
+<h3 class="text-center">Track All The Books You've Read Recently!</h3>
+
+<div class="row">
+    {% for book in books %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ book.title }}</h5>
+                    <p class="card-text">{{ book.author }}</p>
+                    <a href="{{ url_for('book_detail', book_id=book.id) }}" class="btn btn-primary">View Details</a>
+                    <form action="{{ url_for('delete_book', book_id=book.id) }}" method="post">
+                        <button type="submit" class="btn btn-danger">Remove</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
