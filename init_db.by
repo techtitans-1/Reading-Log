@@ -1,0 +1,8 @@
+from app import app, db
+from models import User
+# Import any other models as needed
+
+# Set up the application context
+with app.app_context():
+    # Create all tables in the database
+    db.create_all()
